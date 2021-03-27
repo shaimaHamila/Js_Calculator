@@ -1,0 +1,195 @@
+/** 
+The grid-template-columns property specifies the number (and the widths) of columns in a grid layout.
+The values are a space separated list, where each value specifies the size of the respective column.
+
+The grid-template-rows property specifies the number (and the heights) of the rows in a grid layout.
+The values are a space-separated list, where each value specifies the height of the respective row.
+
+https://www.w3schools.com/cssref/pr_grid.asp
+
+* Base style and typography
+
+document
+ The :root CSS pseudo-class matches the root element of a tree representing the . In HTML, 
+ :root represents the <html> element and is identical to the selector html, except that its specificity is higher.
+**/
+
+:root {
+    --orange-050: #ffe8d9;
+    --orange-100: #ffd0b5;
+    --orange-200: #ffb088;
+    --orange-300: #ff9466;
+    --orange-400: #f9703e;
+    --orange-500: #f35627;
+    --orange-600: #de3a11;
+    --orange-700: #c52707;
+    --orange-800: #ad1d07;
+    --orange-900: #841003;
+
+    --grey-050: #f5f7fa;
+    --grey-100: #e4e7eb;
+    --grey-200: #cbd2d9;
+    --grey-300: #9aa5b1;
+    --grey-400: #7b8794;
+    --grey-500: #616e7c;
+    --grey-600: #52606d;
+    --grey-700: #323f4b;
+    --grey-800: #323f4b;
+    --grey-900: #1f2933;
+}
+
+/****
+Base styles
+****/
+html {
+    font-size: 150%;
+    font-weight: 300;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    line-height: 1.4;
+}
+
+body {
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/***
+Calculator
+***/
+.calculator {
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+    border-radius: 0em;
+    overflow: hidden; /*hidden the out of the box*/
+}
+
+.calculator__display {
+    background-color: var(--grey-900);
+    color: var(--grey-050);
+    width: 16.25rem;
+    padding: 0.75rem 1rem;
+    text-align: right;
+    font-size: calc(1rem * 1.2 * 1.2) ; 
+    /*The calc() CSS function lets you perform calculations 
+    when specifying CSS property values.
+    Use calc() to calculate the width of a <div> element:
+    width: calc(100% - 100px);
+    */
+}
+
+.calculator__keys {
+    background-color: var(--grey-200);
+    /*grid: Displays an element as a block-level grid container/ grid=chabeka*/
+    display: grid;
+    /*Make a 4 columns grid container*/
+    grid-template-columns: repeat(4, auto); 
+    grid-template-areas: 
+        ". . . ."
+        "one tow three equal"
+        "four five six equal"
+        "seven eight nine equal"
+        "zero decimal clear equal"
+    ;
+}
+
+.calculator__keys > button {
+    border: solid 1px rgb(236, 236, 236);
+    padding: 20px;
+    font-size: 20px;
+    color: rgb(70, 67, 67);
+}
+
+.one {
+    grid-area: one;
+}
+
+.tow {
+    grid-area: tow;
+}
+
+.three {
+    grid-area: three;
+}
+
+.four {
+    grid-area: four;
+}
+
+.five {
+    grid-area: five;
+}
+
+.six {
+    grid-area: six;
+}
+.seven {
+    grid-area: seven;
+}
+
+.eight {
+    grid-area: eight;
+}
+
+.nine {
+    grid-area: nine;
+}
+
+.zero {
+    grid-area: zero;
+}
+
+.decimal {
+    grid-area: decimal;
+}
+
+.clear {
+    grid-area: clear;
+}
+
+.zero {
+    grid-area: zero;
+}
+.equal {
+    grid-area: equal;
+    background-color: var(--orange-400);
+}
+.equal:hover{
+    background-color: var(--orange-500);
+}
+
+[data-type="operator"] {
+    background: var(--grey-100);
+} 
+
+[data-type="number"], [data-type="clear"] {
+    background: #fff;
+} 
+
+
+[data-type="operator"]:hover,
+[data-type="number"]:hover,
+[data-type="clear"]:hover {
+    background: var(--grey-200);
+}
+
+
+button:focus {
+    outline: none;
+}
+
+
+[data-type="operator"]:active,
+[data-type="number"]:active,
+[data-type="clear"]:active {
+   background-color:rgb(236, 236, 236);
+}
+
+.equal:active{
+    background-color:var(--orange-400);
+}
+
+[data-state="selectedOperator"]{
+    background-color: var(--grey-200);
+}
+
